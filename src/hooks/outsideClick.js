@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-export const OutsideClick = (el, initialState) => {
+export const UseOutsideClick = (el, initialState) => {
   const [isActive, setIsActive] = useState(initialState);
 
   useEffect(() => {

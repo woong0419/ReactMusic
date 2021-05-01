@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -7,12 +8,13 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { OutsideClick } from "../functions/outsideClick";
+import { UseOutsideClick } from "../hooks/outsideClick";
+
 import "./Navigation.css";
 
 function Navigation() {
   const dropdownRef = useRef(null);
-  const [isActive, setActive] = OutsideClick(dropdownRef, false);
+  const [isActive, setActive] = UseOutsideClick(dropdownRef, false);
   const [menuActive, setMenuActive] = useState(false);
   const onClick = () => setActive(!isActive);
   const onClickMenu = () => setMenuActive(!menuActive);
@@ -27,22 +29,22 @@ function Navigation() {
             </a>
           </li>
           <li>
-            <a href="#">
+            <Link to="/newreleases">
               <FontAwesomeIcon icon={faMusic} />
               <span>New Releases</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="/favorites">
               <FontAwesomeIcon icon={faHeart} />
               <span>Favorites</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="/about">
               <FontAwesomeIcon icon={faInfoCircle} />
               <span>About</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
