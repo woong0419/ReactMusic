@@ -8,7 +8,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { UseOutsideClick } from "../hooks/outsideClick";
+import { UseOutsideClick } from "../hooks/UseOutsideClick";
 
 import "./Navigation.css";
 

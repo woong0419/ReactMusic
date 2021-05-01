@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { UseSpotifyToken } from "../hooks/UseSpotifyToken";
+import Album from "../components/Album";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./NewReleases.css";
 
 //const token = SpotifyToken();
@@ -8,6 +10,7 @@ import "./NewReleases.css";
 function NewReleases() {
   const token = UseSpotifyToken();
   const [items, setItems] = useState(null);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     if (token) {
@@ -19,47 +22,44 @@ function NewReleases() {
         .then((res) => res.json())
         .then((result) => {
           setItems(result.albums.items);
-          //console.log(token);
+          setLoading(false);
         });
     }
   }, [token]);
+
   return (
-    <h1>
-      {(console.log("token:", `${token}`), console.log("ittems:", items))}
-    </h1>
+    <div className="newreleases">
+      {isLoading ? (
+        <div className="main__loader"></div>
+      ) : (
+        <div className="main">
+          <div className="main__header">
+            <h2 className="main__header__title">New Releases</h2>
+            <p className="main__header__p">
+              The following is a list of new releases.<br></br>
+              Clisk the <strong>album cover</strong> or{" "}
+              <strong>artist name</strong> for more information.
+            </p>
+            <br></br>
+          </div>
+          {console.log(items)}
+          <div className="main__albums">
+            {items.map((album) => (
+              <Album
+                key={album.id}
+                name={album.name}
+                id={album.id}
+                releaseDate={album.release_date}
+                totalTrack={album.total_tracks}
+                artist={album.artists}
+                imageUrl={album.images[0].url}
+              ></Album>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
-
-// class NewReleases extends React.Component {
-//   state = {
-//     items: [],
-//     isLoading: true,
-//   };
-
-//   getNewReleases = async () => {
-//     const {
-//       data: {
-//         albums: { items },
-//       },
-//     } = await axios.get("https://api.spotify.com/v1/browse/new-releases", {
-//       headers: {
-//         Authorization: `Bearer BQCd51FVSOlGIi0XtqqLVzUU88WpbEPUvmd3eQiDSJB3FaHDT8z_3usLLrJbC8xmXXaD4b-vF3-tuxmJ92k`,
-//       },
-//     });
-
-//     this.setState({ items, isLoading: false });
-//   };
-
-//   componentDidMount() {
-//     this.getNewReleases();
-//   }
-
-//   render() {
-//     const { isLoading, items } = this.state;
-//     console.log("here", items);
-//     //console.log("token", token);
-//     return <></>;
-//   }
-// }
 
 export default NewReleases;

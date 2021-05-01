@@ -77,8 +77,7 @@
   justify-content: center;
 }
 
-.nav__user__drop.active,
-.nav__menu__drop.active {
+.nav__user__drop.active {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
