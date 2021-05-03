@@ -115,7 +115,6 @@
   transform: translateX(-40px);
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
   justify-content: left;
-  z-index: -1;
 }
 
 .nav__menu__drop ul {
@@ -144,7 +143,7 @@
 }
 
 .container__main {
-  position: absolute;
+  position: relative;
   width: auto;
   margin-top: 64px;
   height: 100%;

@@ -34,44 +34,45 @@ function Navigation() {
 
   return (
     <>
-      <nav className={`nav__menu__drop ${menuActive ? "active" : "inactive"}`}>
-        <ul>
-          <li>
-            <form onSubmit={handleSubmit} className="nav__menu__drop__search">
-              <input
-                type="text"
-                id="header-search"
-                placeholder="Artist"
-                value={searchString}
-                onChange={(e) => setSearchString(e.target.value)}
-              />
-              <button type="submit" disabled={!searchString.trim().length}>
-                <FontAwesomeIcon icon={faSearch} />
-              </button>
-            </form>
-          </li>
-          <li>
-            <Link to="/newreleases">
-              <FontAwesomeIcon icon={faMusic} />
-              <span>New Releases</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/favorites">
-              <FontAwesomeIcon icon={faHeart} />
-              <span>Favorites</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/about">
-              <FontAwesomeIcon icon={faInfoCircle} />
-              <span>About</span>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-
       <div className={`container__main ${menuActive ? "active" : "inactive"}`}>
+        <nav
+          className={`nav__menu__drop ${menuActive ? "active" : "inactive"}`}
+        >
+          <ul>
+            <li>
+              <form onSubmit={handleSubmit} className="nav__menu__drop__search">
+                <input
+                  type="text"
+                  id="header-search"
+                  placeholder="Artist"
+                  value={searchString}
+                  onChange={(e) => setSearchString(e.target.value)}
+                />
+                <button type="submit" disabled={!searchString.trim().length}>
+                  <FontAwesomeIcon icon={faSearch} />
+                </button>
+              </form>
+            </li>
+            <li>
+              <Link to="/newreleases">
+                <FontAwesomeIcon icon={faMusic} />
+                <span>New Releases</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/favorites">
+                <FontAwesomeIcon icon={faHeart} />
+                <span>Favorites</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/about">
+                <FontAwesomeIcon icon={faInfoCircle} />
+                <span>About</span>
+              </Link>
+            </li>
+          </ul>
+        </nav>
         <Route path="/" exact={true} component={NewReleases} />
         <Route path="/newreleases" component={NewReleases} />
         <Route path="/search" component={SearchResult} />

@@ -1,6 +1,3 @@
 .table-hover tr:hover {
   cursor: pointer;
 }
-body {
-  overflow: hidden;
-}
