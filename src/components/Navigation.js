@@ -1,14 +1,18 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UseOutsideClick } from "../hooks/UseOutsideClick";
+import NewReleases from "../routes/NewReleases";
+import SearchResult from "../routes/SearchResult";
 
 import "./Navigation.css";
 
@@ -16,17 +20,35 @@ function Navigation() {
   const dropdownRef = useRef(null);
   const [isActive, setActive] = UseOutsideClick(dropdownRef, false);
   const [menuActive, setMenuActive] = useState(false);
+  const [searchString, setSearchString] = useState("");
+
+  let history = useHistory();
+
   const onClick = () => setActive(!isActive);
   const onClickMenu = () => setMenuActive(!menuActive);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push(`/search?q=${searchString}`);
+    setSearchString("");
+  };
 
   return (
     <>
       <nav className={`nav__menu__drop ${menuActive ? "active" : "inactive"}`}>
         <ul>
           <li>
-            <a href="#">
-              <span>Search</span>
-            </a>
+            <form onSubmit={handleSubmit} className="nav__menu__drop__search">
+              <input
+                type="text"
+                id="header-search"
+                placeholder="Artist"
+                value={searchString}
+                onChange={(e) => setSearchString(e.target.value)}
+              />
+              <button type="submit" disabled={!searchString.trim().length}>
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+            </form>
           </li>
           <li>
             <Link to="/newreleases">
@@ -48,6 +70,14 @@ function Navigation() {
           </li>
         </ul>
       </nav>
+
+      <div className={`container__main ${menuActive ? "active" : "inactive"}`}>
+        <Route path="/" exact={true} component={NewReleases} />
+        <Route path="/newreleases" component={NewReleases} />
+        <Route path="/search" component={SearchResult} />
+        <div className="container__main__bottomspacer"></div>
+      </div>
+
       <div className="nav">
         <button onClick={onClickMenu} className="nav__menu">
           <FontAwesomeIcon icon={faBars} />

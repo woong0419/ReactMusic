@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { UseSpotifyToken } from "../hooks/UseSpotifyToken";
-import Album from "../components/Album";
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Release from "../components/Release";
+
 import "./NewReleases.css";
 
 //const token = SpotifyToken();
@@ -42,10 +41,10 @@ function NewReleases() {
             </p>
             <br></br>
           </div>
-          {console.log(items)}
+
           <div className="main__albums">
             {items.map((album) => (
-              <Album
+              <Release
                 key={album.id}
                 name={album.name}
                 id={album.id}
@@ -53,7 +52,7 @@ function NewReleases() {
                 totalTrack={album.total_tracks}
                 artist={album.artists}
                 imageUrl={album.images[0].url}
-              ></Album>
+              ></Release>
             ))}
           </div>
         </div>

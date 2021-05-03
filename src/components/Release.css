@@ -1,0 +1,62 @@
+.album {
+  flex: 1 1 0%;
+  margin: 20px;
+  padding: 16px;
+  min-width: 200px;
+  box-shadow: 0 13px 27px -5px rgba(0, 0, 0, 0.025),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  position: relative;
+  width: auto;
+}
+.album__content {
+  border-radius: 5px;
+}
+.album__content__header {
+  margin: 0 16px;
+}
+.album__content__header__title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.album__content__header__status {
+  margin-bottom: 16px;
+  margin-top: -8px;
+  color: darkgray;
+  font-size: 14px;
+}
+.album__content__cover {
+  margin: 0 -16px 16px -16px;
+  width: calc(100% + 32px);
+}
+.album__content__tracks,
+.album__content__releaseDate,
+.album__content__followers,
+.album__content__Popularity {
+  font-size: 14px;
+}
+.album__content__artists {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.album__content__artists a {
+  font-size: 14px;
+  list-style: none;
+  text-decoration: none;
+}
+
+.album__content__artists__artist {
+  color: black;
+  background-color: #e0e0e0;
+  border-radius: 16px;
+  margin: 4px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 7px 12px;
+  font-weight: 500;
+}

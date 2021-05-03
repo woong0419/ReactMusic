@@ -1,4 +1,4 @@
-.newreleases {
+.search {
   position: relative;
   display: flex;
   align-items: center;
@@ -7,18 +7,18 @@
   margin: 0;
 }
 
-.main {
+.search__main {
   width: 100%;
   padding: 40px;
 }
 
-.main__header__title,
-.main__header__p {
+.search__main__header__title,
+.search__main__header__p {
   margin-top: 0;
   margin-bottom: 16px;
 }
 
-.main__albums {
+.search__main__albums {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;

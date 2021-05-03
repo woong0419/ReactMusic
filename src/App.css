@@ -1,9 +1,6 @@
 .table-hover tr:hover {
   cursor: pointer;
 }
-
-.nav__menu__drop.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+body {
+  overflow: hidden;
 }
