@@ -6,7 +6,7 @@ import "./SearchResult.css";
 function SearchResult() {
   const token = UseSpotifyToken();
   const searchString = new URLSearchParams(window.location.search).get("q");
-  const [items, setItems] = useState("");
+  const [items, setItems] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {

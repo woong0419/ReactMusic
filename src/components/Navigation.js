@@ -13,7 +13,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UseOutsideClick } from "../hooks/UseOutsideClick";
 import NewReleases from "../routes/NewReleases";
 import SearchResult from "../routes/SearchResult";
-
+import ArtistDiscography from "../routes/ArtistDiscography";
+import MusicAlbum from "../routes/MusicAlbum";
 import "./Navigation.css";
 
 function Navigation() {
@@ -76,6 +77,8 @@ function Navigation() {
         <Route path="/" exact={true} component={NewReleases} />
         <Route path="/newreleases" component={NewReleases} />
         <Route path="/search" component={SearchResult} />
+        <Route path="/album/:id" component={MusicAlbum} />
+        <Route path="/artist/:id" component={ArtistDiscography} />
         <div className="container__main__bottomspacer"></div>
       </div>
 

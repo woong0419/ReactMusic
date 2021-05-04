@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Album.css";
+import ArtistDiscography from "../routes/ArtistDiscography";
 
 function Album({ name, id, imageUrl, followers, popularity }) {
   return (

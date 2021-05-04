@@ -24,15 +24,23 @@ function Release({ name, id, releaseDate, totalTrack, artist, imageUrl }) {
           {totalTrack}
         </div>
         <br></br>
-        <ul className="album__content__artists">
-          {artist.map((artists) => (
-            <Link to={`/artist/${artists.id}`}>
-              <li key={artists.id} className="album__content__artists__artist">
-                <span>{artists.name}</span>
-              </li>
-            </Link>
-          ))}
-        </ul>
+
+        {artist ? (
+          <ul className="album__content__artists">
+            {artist.map((artists) => (
+              <Link to={`/artist/${artists.id}`}>
+                <li
+                  key={artists.id}
+                  className="album__content__artists__artist"
+                >
+                  <span>{artists.name}</span>
+                </li>
+              </Link>
+            ))}
+          </ul>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );
