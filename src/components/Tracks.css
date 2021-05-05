@@ -1,0 +1,23 @@
+.tracks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  padding: 0 16px;
+  box-shadow: 0 13px 27px -5px rgba(0, 0, 0, 0.025),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+.tracks__icon {
+  width: 30px;
+  height: 30px;
+  box-sizing: content-box;
+  padding: 4px;
+  font-size: 25px;
+}
+
+.tracks__contents {
+  padding: 16px;
+}
+.tracks__contents__name {
+  margin-bottom: 15px;
+}

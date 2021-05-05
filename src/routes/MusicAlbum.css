@@ -1,0 +1,27 @@
+.music {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+}
+
+.music__main {
+  width: 100%;
+  padding: 40px;
+}
+
+.music__main__header__title,
+.music__main__header__p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.music__main__album {
+  box-shadow: 0 13px 27px -5px rgba(0, 0, 0, 0.025),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  position: relative;
+  padding: 16px;
+  border-radius: 4px;
+}

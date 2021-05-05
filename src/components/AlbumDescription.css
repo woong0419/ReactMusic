@@ -1,0 +1,48 @@
+.albumdesc__content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.albumdesc__content__cover {
+  margin: 10px;
+  max-width: 320px;
+}
+
+.albumdesc__content__content {
+  flex: 1 1 0%;
+  min-width: 300px;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.albumdesc__content__content__artists {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.albumdesc__content__content__copyrights {
+  margin: 0;
+  padding: 0;
+}
+.albumdesc__content__content__artists a,
+.albumdesc__content__content__copyrights__copyright {
+  font-size: 14px;
+  list-style: none;
+  text-decoration: none;
+}
+
+.albumdesc__content__content__artists__artist {
+  color: black;
+  background-color: #e0e0e0;
+  border-radius: 16px;
+  margin: 4px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 7px 12px;
+  font-weight: 500;
+}
