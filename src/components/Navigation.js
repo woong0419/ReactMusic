@@ -11,11 +11,13 @@ import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UseOutsideClick } from "../hooks/UseOutsideClick";
+import jwt_decode from "jwt-decode";
 import NewReleases from "../routes/NewReleases";
 import SearchResult from "../routes/SearchResult";
 import ArtistDiscography from "../routes/ArtistDiscography";
 import MusicAlbum from "../routes/MusicAlbum";
 import Login from "../routes/Login";
+import Register from "../routes/Register";
 import "./Navigation.css";
 
 function Navigation() {
@@ -23,6 +25,16 @@ function Navigation() {
   const [isActive, setActive] = UseOutsideClick(dropdownRef, false);
   const [menuActive, setMenuActive] = useState(false);
   const [searchString, setSearchString] = useState("");
+  // const [hasToken, setHasToken] = useState(false);
+  // const userToken = localStorage.getItem("access_token");
+  // // const decoded = jwt_decode(userToken);
+  // useEffect(() => {
+  //   if (userToken) {
+  //     setHasToken(true);
+  //   } else {
+  //     setHasToken(false);
+  //   }
+  // }, [userToken]);
 
   let history = useHistory();
 
@@ -78,12 +90,17 @@ function Navigation() {
             </li>
           </ul>
         </nav>
-        <Route path="/" exact={true} component={NewReleases} />
+        <Route
+          path="/"
+          exact={true}
+          render={() => <Redirect to="/newreleases" />}
+        />
         <Route path="/newreleases" component={NewReleases} />
         <Route path="/search" component={SearchResult} />
         <Route path="/album/:id" component={MusicAlbum} />
         <Route path="/artist/:id" component={ArtistDiscography} />
-        <Route path="/login" component={Login} />
+
+        <Route path="/register" component={Register} />
         <div className="container__main__bottomspacer"></div>
       </div>
 

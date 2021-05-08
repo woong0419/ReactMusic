@@ -1,32 +1,63 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
-import { UseLogin } from "../hooks/UseLogin";
-
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
-  const [user, setUser] = useState({
-    userName: "woo",
-    password: "123",
-  });
-  const userToken = UseLogin(user);
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [_id, set_Id] = useState(null);
 
-  if (userToken) {
-    localStorage.setItem("access_token", userToken.token);
-  }
+  const loginApi = (user) => {
+    return fetch("https://gentle-fortress-01681.herokuapp.com/api/user/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    }).then((res) => res.json());
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userToken = await loginApi({
+      userName: userName,
+      password: password,
+      _id: _id,
+    });
+    console.log(userToken);
+    if (userToken.message === "login successful") {
+      localStorage.setItem("access_token", userToken.token);
+    } else {
+      setUserName("");
+      setPassword("");
+      set_Id(null);
+    }
+  };
 
   return (
-    <h1>
-      {console.log("GET LOGIN")}
-      {userToken ? (
-        <div>
-          <Redirect to="/newreleases" />
-          {console.log(userToken.token)}
-        </div>
-      ) : (
-        <div></div>
-      )}
-    </h1>
+    <div className="login">
+      <form onSubmit={handleSubmit}>
+        <h2>Log In</h2>
+        <input
+          placeholder="User Name"
+          id="userName"
+          name="userName"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+        ></input>
+        <input
+          type="password"
+          placeholder="Password"
+          id="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
+
+        <button type="submit">Login</button>
+        <Link to="/register">
+          <button>Register</button>
+        </Link>
+      </form>
+    </div>
   );
 }
 
