@@ -91,13 +91,20 @@
   padding: 0;
 }
 
-.nav__user__drop li a,
+.nav__user__drop li button,
 .nav__menu__drop li a {
   text-decoration: none;
   color: dimgray;
 }
 
-.nav__user__drop li a span {
+.nav__user__drop li button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: white;
+}
+
+.nav__user__drop li button span {
   margin-left: 15px;
 }
 

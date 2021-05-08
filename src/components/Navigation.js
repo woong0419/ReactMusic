@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { Link, useHistory } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +15,7 @@ import NewReleases from "../routes/NewReleases";
 import SearchResult from "../routes/SearchResult";
 import ArtistDiscography from "../routes/ArtistDiscography";
 import MusicAlbum from "../routes/MusicAlbum";
+import Login from "../routes/Login";
 import "./Navigation.css";
 
 function Navigation() {
@@ -27,6 +28,9 @@ function Navigation() {
 
   const onClick = () => setActive(!isActive);
   const onClickMenu = () => setMenuActive(!menuActive);
+  const onClickLogout = () => {
+    localStorage.removeItem("access_token");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     history.push(`/search?q=${searchString}`);
@@ -79,6 +83,7 @@ function Navigation() {
         <Route path="/search" component={SearchResult} />
         <Route path="/album/:id" component={MusicAlbum} />
         <Route path="/artist/:id" component={ArtistDiscography} />
+        <Route path="/login" component={Login} />
         <div className="container__main__bottomspacer"></div>
       </div>
 
@@ -98,10 +103,12 @@ function Navigation() {
         >
           <ul>
             <li>
-              <a href="#">
-                <FontAwesomeIcon icon={faSignOutAlt} />
-                <span>Log Out</span>
-              </a>
+              <Link to="/login">
+                <button onClick={onClickLogout}>
+                  <FontAwesomeIcon icon={faSignOutAlt} />
+                  <span>Log Out</span>
+                </button>
+              </Link>
             </li>
           </ul>
         </nav>
