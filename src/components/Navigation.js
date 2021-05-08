@@ -25,16 +25,19 @@ function Navigation() {
   const [isActive, setActive] = UseOutsideClick(dropdownRef, false);
   const [menuActive, setMenuActive] = useState(false);
   const [searchString, setSearchString] = useState("");
-  // const [hasToken, setHasToken] = useState(false);
-  // const userToken = localStorage.getItem("access_token");
-  // // const decoded = jwt_decode(userToken);
-  // useEffect(() => {
-  //   if (userToken) {
-  //     setHasToken(true);
-  //   } else {
-  //     setHasToken(false);
-  //   }
-  // }, [userToken]);
+  const [isLoading, setLoading] = useState(true);
+
+  const [hasToken, setHasToken] = useState(false);
+  const userToken = localStorage.getItem("access_token");
+  // const decoded = jwt_decode(userToken);
+  useEffect(() => {
+    if (userToken) {
+      setHasToken(true);
+    } else {
+      setHasToken(false);
+    }
+    setLoading(false);
+  }, [userToken]);
 
   let history = useHistory();
 
@@ -51,58 +54,75 @@ function Navigation() {
 
   return (
     <>
-      <div className={`container__main ${menuActive ? "active" : "inactive"}`}>
-        <nav
-          className={`nav__menu__drop ${menuActive ? "active" : "inactive"}`}
+      {!isLoading && (
+        <div
+          className={`container__main ${menuActive ? "active" : "inactive"}`}
         >
-          <ul>
-            <li>
-              <form onSubmit={handleSubmit} className="nav__menu__drop__search">
-                <input
-                  type="text"
-                  id="header-search"
-                  placeholder="Artist"
-                  value={searchString}
-                  onChange={(e) => setSearchString(e.target.value)}
-                />
-                <button type="submit" disabled={!searchString.trim().length}>
-                  <FontAwesomeIcon icon={faSearch} />
-                </button>
-              </form>
-            </li>
-            <li>
-              <Link to="/newreleases">
-                <FontAwesomeIcon icon={faMusic} />
-                <span>New Releases</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/favorites">
-                <FontAwesomeIcon icon={faHeart} />
-                <span>Favorites</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/about">
-                <FontAwesomeIcon icon={faInfoCircle} />
-                <span>About</span>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        <Route
-          path="/"
-          exact={true}
-          render={() => <Redirect to="/newreleases" />}
-        />
-        <Route path="/newreleases" component={NewReleases} />
-        <Route path="/search" component={SearchResult} />
-        <Route path="/album/:id" component={MusicAlbum} />
-        <Route path="/artist/:id" component={ArtistDiscography} />
+          {console.log(hasToken)}
+          <nav
+            className={`nav__menu__drop ${menuActive ? "active" : "inactive"}`}
+          >
+            <ul>
+              <li>
+                <form
+                  onSubmit={handleSubmit}
+                  className="nav__menu__drop__search"
+                >
+                  <input
+                    type="text"
+                    id="header-search"
+                    placeholder="Artist"
+                    value={searchString}
+                    onChange={(e) => setSearchString(e.target.value)}
+                  />
+                  <button type="submit" disabled={!searchString.trim().length}>
+                    <FontAwesomeIcon icon={faSearch} />
+                  </button>
+                </form>
+              </li>
+              <li>
+                <Link to="/newreleases">
+                  <FontAwesomeIcon icon={faMusic} />
+                  <span>New Releases</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/favorites">
+                  <FontAwesomeIcon icon={faHeart} />
+                  <span>Favorites</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/about">
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                  <span>About</span>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          {hasToken ? (
+            <Route
+              path="/"
+              exact={true}
+              render={() => <Redirect to="/newreleases" />}
+            />
+          ) : (
+            <Route
+              path="/"
+              exact={true}
+              render={() => <Redirect to="/login" />}
+            />
+          )}
 
-        <Route path="/register" component={Register} />
-        <div className="container__main__bottomspacer"></div>
-      </div>
+          <Route path="/newreleases" component={NewReleases} />
+          <Route path="/search" component={SearchResult} />
+          <Route path="/album/:id" component={MusicAlbum} />
+          <Route path="/artist/:id" component={ArtistDiscography} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <div className="container__main__bottomspacer"></div>
+        </div>
+      )}
 
       <div className="nav">
         <button onClick={onClickMenu} className="nav__menu">

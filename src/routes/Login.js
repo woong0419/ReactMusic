@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [_id, set_Id] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   const loginApi = (user) => {
     return fetch("https://gentle-fortress-01681.herokuapp.com/api/user/login", {
@@ -22,9 +23,10 @@ function Login() {
       password: password,
       _id: _id,
     });
-    console.log(userToken);
+
     if (userToken.message === "login successful") {
       localStorage.setItem("access_token", userToken.token);
+      setSuccess(true);
     } else {
       setUserName("");
       setPassword("");
@@ -53,6 +55,7 @@ function Login() {
         ></input>
 
         <button type="submit">Login</button>
+        {success ? <Redirect to="/newreleases" /> : <div></div>}
         <Link to="/register">
           <button>Register</button>
         </Link>
