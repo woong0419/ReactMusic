@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import { Link, useHistory } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -29,7 +29,14 @@ function Navigation() {
 
   const [hasToken, setHasToken] = useState(false);
   const userToken = localStorage.getItem("access_token");
+  const [decoded, setDecoded] = useState(null);
   // const decoded = jwt_decode(userToken);
+  useEffect(() => {
+    if (hasToken) {
+      setDecoded(jwt_decode(userToken));
+    }
+  }, [hasToken]);
+
   useEffect(() => {
     if (userToken) {
       setHasToken(true);
@@ -45,6 +52,10 @@ function Navigation() {
   const onClickMenu = () => setMenuActive(!menuActive);
   const onClickLogout = () => {
     localStorage.removeItem("access_token");
+    sessionStorage.removeItem("token_expires");
+    sessionStorage.removeItem("spotify_token");
+    history.push("/login");
+    window.location.reload();
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +69,6 @@ function Navigation() {
         <div
           className={`container__main ${menuActive ? "active" : "inactive"}`}
         >
-          {console.log(hasToken)}
           <nav
             className={`nav__menu__drop ${menuActive ? "active" : "inactive"}`}
           >
@@ -107,11 +117,7 @@ function Navigation() {
               render={() => <Redirect to="/newreleases" />}
             />
           ) : (
-            <Route
-              path="/"
-              exact={true}
-              render={() => <Redirect to="/login" />}
-            />
+            <Route path="/" render={() => <Redirect to="/login" />} />
           )}
 
           <Route path="/newreleases" component={NewReleases} />
@@ -125,27 +131,30 @@ function Navigation() {
       )}
 
       <div className="nav">
-        <button onClick={onClickMenu} className="nav__menu">
-          <FontAwesomeIcon icon={faBars} />
-        </button>
+        {hasToken && (
+          <button onClick={onClickMenu} className="nav__menu">
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+        )}
         <div className="nav__page">React Music</div>
         <div className="nav__spacer"></div>
-        <button onClick={onClick} className="nav__user">
-          <FontAwesomeIcon icon={faUser} />
-          <span>User</span>
-        </button>
+        {hasToken && (
+          <button onClick={onClick} className="nav__user">
+            <FontAwesomeIcon icon={faUser} />
+            <span>{decoded && decoded.userName}</span>
+          </button>
+        )}
+
         <nav
           ref={dropdownRef}
           className={`nav__user__drop ${isActive ? "active" : "inactive"}`}
         >
           <ul>
             <li>
-              <Link to="/login">
-                <button onClick={onClickLogout}>
-                  <FontAwesomeIcon icon={faSignOutAlt} />
-                  <span>Log Out</span>
-                </button>
-              </Link>
+              <button onClick={onClickLogout}>
+                <FontAwesomeIcon icon={faSignOutAlt} />
+                <span>Log Out</span>
+              </button>
             </li>
           </ul>
         </nav>
