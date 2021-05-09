@@ -18,6 +18,7 @@ import ArtistDiscography from "../routes/ArtistDiscography";
 import MusicAlbum from "../routes/MusicAlbum";
 import Login from "../routes/Login";
 import Register from "../routes/Register";
+import Favorites from "../routes/favorites";
 import "./Navigation.css";
 
 function Navigation() {
@@ -122,6 +123,7 @@ function Navigation() {
 
           <Route path="/newreleases" component={NewReleases} />
           <Route path="/search" component={SearchResult} />
+          <Route path="/favorites" component={Favorites} />
           <Route path="/album/:id" component={MusicAlbum} />
           <Route path="/artist/:id" component={ArtistDiscography} />
           <Route path="/login" component={Login} />
