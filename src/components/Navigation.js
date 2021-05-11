@@ -128,6 +128,7 @@ function Navigation() {
           <Route path="/artist/:id" component={ArtistDiscography} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+
           <div className="container__main__bottomspacer"></div>
         </div>
       )}

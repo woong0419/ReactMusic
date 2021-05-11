@@ -4,13 +4,34 @@ import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AlbumDescription from "../components/AlbumDescription";
 import Tracks from "../components/Tracks";
+import Modal from "../components/Modal";
 
 import "./MusicAlbum.css";
 
 function MusicAlbum({ match }) {
   const token = UseSpotifyToken();
+  const userToken = localStorage.getItem("access_token");
   const [items, setItems] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  const [show, setShow] = useState(false);
+
+  const handleAdd = (id) => {
+    fetch(
+      `https://gentle-fortress-01681.herokuapp.com/api/user/favourites/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `JWT ${userToken}`,
+        },
+      }
+    )
+      .then(setShow(true))
+      .then(
+        setTimeout(() => {
+          setShow(false);
+        }, 2000)
+      );
+  };
 
   useEffect(() => {
     if (token && match.params.id) {
@@ -60,17 +81,26 @@ function MusicAlbum({ match }) {
           <br></br>
           <div className="music__main__tracks">
             {items.tracks.items.map((track) => (
-              <Tracks
-                key={track.id}
-                id={track.id}
-                trackNumber={track.track_number}
-                name={track.name}
-                duration={track.duration_ms}
-                prevUrl={track.preview_url}
-                icon="add"
-              ></Tracks>
+              <div>
+                <button
+                  onClick={() => handleAdd(track.id)}
+                  className="tracks__icon"
+                >
+                  <FontAwesomeIcon icon={faPlayCircle} />
+                </button>
+
+                <Tracks
+                  key={track.id}
+                  id={track.id}
+                  trackNumber={track.track_number}
+                  name={track.name}
+                  duration={track.duration_ms}
+                  prevUrl={track.preview_url}
+                ></Tracks>
+              </div>
             ))}
           </div>
+          {show && <Modal></Modal>}
         </div>
       )}
     </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { UseSpotifyToken } from "../hooks/UseSpotifyToken";
-
 import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tracks from "../components/Tracks";
@@ -13,6 +12,22 @@ function Favorites() {
   const [ids, setIds] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const userToken = localStorage.getItem("access_token");
+
+  const handleRemove = (id) => {
+    fetch(
+      `https://gentle-fortress-01681.herokuapp.com/api/user/favourites/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `JWT ${userToken}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setIds(data);
+      });
+  };
 
   useEffect(() => {
     fetch("https://gentle-fortress-01681.herokuapp.com/api/user/favourites", {
@@ -35,7 +50,7 @@ function Favorites() {
       })
         .then((res) => res.json())
         .then((data) => {
-          setItems(data);
+          setItems(data.tracks);
           setLoading(false);
         });
     }
@@ -59,19 +74,26 @@ function Favorites() {
           </div>
           <br></br>
           <br></br>
-          {items.tracks && (
+          {items && (
             <div className="favorites__main__tracks">
-              {items.tracks.map((track) => (
-                <Tracks
-                  key={track.id}
-                  id={track.id}
-                  artist={track.artists[0]}
-                  album={track.album}
-                  name={track.name}
-                  duration={track.duration_ms}
-                  prevUrl={track.preview_url}
-                  icon="remove"
-                ></Tracks>
+              {items.map((track) => (
+                <div>
+                  <button
+                    onClick={() => handleRemove(track.id)}
+                    className="tracks__icon"
+                  >
+                    <FontAwesomeIcon icon={faPlayCircle} />
+                  </button>
+                  <Tracks
+                    key={track.id}
+                    id={track.id}
+                    artist={track.artists[0]}
+                    album={track.album}
+                    name={track.name}
+                    duration={track.duration_ms}
+                    prevUrl={track.preview_url}
+                  ></Tracks>
+                </div>
               ))}
             </div>
           )}

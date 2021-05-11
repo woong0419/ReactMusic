@@ -9,7 +9,7 @@ export const UseSpotifyToken = () => {
   useEffect(() => {
     if (
       !sessionStorage.getItem("spotify_token") ||
-      new Date() > sessionStorage.getItem("token_expires")
+      new Date().getTime() >= Number(sessionStorage.getItem("token_expires"))
     ) {
       sessionStorage.removeItem("token_expires");
       sessionStorage.removeItem("spotify_token");

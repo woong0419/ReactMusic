@@ -41,7 +41,6 @@ function NewReleases() {
             </p>
             <br></br>
           </div>
-
           <div className="main__albums">
             {items.map((album) => (
               <Release
@@ -55,6 +54,7 @@ function NewReleases() {
               ></Release>
             ))}
           </div>
+          )
         </div>
       )}
     </div>
