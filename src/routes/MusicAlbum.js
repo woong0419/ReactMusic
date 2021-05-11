@@ -67,6 +67,7 @@ function MusicAlbum({ match }) {
                 name={track.name}
                 duration={track.duration_ms}
                 prevUrl={track.preview_url}
+                icon="add"
               ></Tracks>
             ))}
           </div>
