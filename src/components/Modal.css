@@ -1,4 +1,21 @@
 .modal {
   position: fixed;
   bottom: 0;
+  left: 30%;
+  width: 40%;
+  height: 2.5em;
+  background-color: white;
+  margin: 20px;
+  box-shadow: 0 13px 27px -5px rgba(0, 0, 0, 0.025),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+.modal span {
+  margin-left: 2em;
+}
+.modal strong {
+  margin-right: 2em;
 }

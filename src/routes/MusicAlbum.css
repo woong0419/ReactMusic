@@ -25,3 +25,25 @@
   padding: 16px;
   border-radius: 4px;
 }
+
+.music__main__tracks {
+  display: flex;
+  align-items: center;
+}
+
+.tracks__icon {
+  width: 30px;
+  height: 30px;
+  box-sizing: content-box;
+  padding: 4px;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  margin-right: 15px;
+  background-color: white;
+}
+
+.tracks__icon:hover {
+  color: dimgray;
+}

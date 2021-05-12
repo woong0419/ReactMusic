@@ -6,10 +6,12 @@ export const UseSpotifyToken = () => {
     process.env.REACT_APP_CLIENTID + ":" + process.env.REACT_APP_CLIENTSECRET
   );
 
+  const time = new Date();
   useEffect(() => {
     if (
       !sessionStorage.getItem("spotify_token") ||
-      new Date().getTime() >= Number(sessionStorage.getItem("token_expires"))
+      time.setSeconds(time.getSeconds()) >=
+        Number(sessionStorage.getItem("token_expires"))
     ) {
       sessionStorage.removeItem("token_expires");
       sessionStorage.removeItem("spotify_token");
@@ -33,16 +35,17 @@ export const UseSpotifyToken = () => {
           setToken(data.access_token);
           const tokenExpires = new Date();
 
-          console.log(
-            tokenExpires.setSeconds(tokenExpires.getSeconds() + data.expires_in)
-          );
+          console.log(Number(data.expires_in));
           sessionStorage.setItem("spotify_token", data.access_token);
           sessionStorage.setItem(
             "token_expires",
-            tokenExpires.setSeconds(tokenExpires.getSeconds() + data.expires_in)
+            tokenExpires.setSeconds(
+              tokenExpires.getSeconds() + Number(data.expires_in)
+            )
           );
         });
     } else {
+      console.log(time.setSeconds(time.getSeconds()));
       setToken(sessionStorage.getItem("spotify_token"));
     }
   }, []);

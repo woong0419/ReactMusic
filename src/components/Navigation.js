@@ -18,7 +18,9 @@ import ArtistDiscography from "../routes/ArtistDiscography";
 import MusicAlbum from "../routes/MusicAlbum";
 import Login from "../routes/Login";
 import Register from "../routes/Register";
-import Favorites from "../routes/favorites";
+import Favorites from "../routes/Favorites";
+import NotFound from "../routes/NotFound";
+import About from "../routes/About";
 import "./Navigation.css";
 
 function Navigation() {
@@ -120,15 +122,17 @@ function Navigation() {
           ) : (
             <Route path="/" render={() => <Redirect to="/login" />} />
           )}
-
-          <Route path="/newreleases" component={NewReleases} />
-          <Route path="/search" component={SearchResult} />
-          <Route path="/favorites" component={Favorites} />
-          <Route path="/album/:id" component={MusicAlbum} />
-          <Route path="/artist/:id" component={ArtistDiscography} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-
+          <Switch>
+            <Route exact path="/newreleases" component={NewReleases} />
+            <Route exact path="/search" component={SearchResult} />
+            <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/album/:id" component={MusicAlbum} />
+            <Route exact path="/artist/:id" component={ArtistDiscography} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/about" component={About} />
+            <Route render={() => <NotFound />} />
+          </Switch>
           <div className="container__main__bottomspacer"></div>
         </div>
       )}

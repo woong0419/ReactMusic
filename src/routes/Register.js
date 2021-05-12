@@ -42,7 +42,11 @@ function Register() {
     <div className="register">
       <div>
         <h2>Register</h2>
-        {message ? <div>{message}</div> : <div></div>}
+        {message ? (
+          <div className="register__message">{message}</div>
+        ) : (
+          <div></div>
+        )}
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -66,6 +70,7 @@ function Register() {
             placeholder="Confirm Password"
           ></input>
           <button type="submit">Submit</button>
+          &nbsp;&nbsp;
           {isSuccess ? (
             <Link to="/login">
               <button>Login</button>

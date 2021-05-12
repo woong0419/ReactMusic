@@ -75,9 +75,9 @@ function Favorites() {
           <br></br>
           <br></br>
           {items && (
-            <div className="favorites__main__tracks">
+            <div>
               {items.map((track) => (
-                <div>
+                <div className="favorites__main__tracks">
                   <button
                     onClick={() => handleRemove(track.id)}
                     className="tracks__icon"

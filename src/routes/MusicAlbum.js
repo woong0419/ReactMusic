@@ -79,9 +79,9 @@ function MusicAlbum({ match }) {
           <br></br>
           <h2 className="music__main__header__title">Track Listing</h2>
           <br></br>
-          <div className="music__main__tracks">
+          <div>
             {items.tracks.items.map((track) => (
-              <div>
+              <div className="music__main__tracks">
                 <button
                   onClick={() => handleAdd(track.id)}
                   className="tracks__icon"

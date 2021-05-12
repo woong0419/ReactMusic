@@ -54,7 +54,6 @@ function NewReleases() {
               ></Release>
             ))}
           </div>
-          )
         </div>
       )}
     </div>

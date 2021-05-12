@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import "./Tracks.css";
 
 function Tracks({ id, trackNumber, name, duration, prevUrl, artist, album }) {
