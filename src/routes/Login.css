@@ -34,3 +34,8 @@
   background-color: whitesmoke;
   color: dimgray;
 }
+
+.login__message {
+  color: red;
+  margin-bottom: 10px;
+}

@@ -6,6 +6,7 @@ function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [_id, set_Id] = useState(null);
+  const [message, setMessage] = useState("");
 
   let history = useHistory();
 
@@ -34,6 +35,7 @@ function Login() {
       setUserName("");
       setPassword("");
       set_Id(null);
+      setMessage(userToken.message);
     }
   };
 
@@ -41,6 +43,7 @@ function Login() {
     <div className="login">
       <form onSubmit={handleSubmit}>
         <h2>Log In</h2>
+        {message && <div className="login__message">{message}</div>}
         <input
           placeholder="User Name"
           id="userName"
