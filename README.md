@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+## Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Music web application.<br>
+The website uses Spotify API to get recently released music data.<br>
+Using MongoDB server to save registered user data and their playlist.<br>
+This project website [React music App](https://react-music-w.netlify.app/).
 
-## Available Scripts
+## Result screen
 
-In the project directory, you can run:
+**Adding to-do content:**<br>
+<img src="https://user-images.githubusercontent.com/59901905/159135058-d3dad050-671f-4ebf-9695-162c5d8fcde0.PNG" width="200"/>
+<img src="https://user-images.githubusercontent.com/59901905/159135061-4c844e35-ad4a-45cf-b530-8b23cf6af1ea.PNG" width="200"/>
 
-### `npm start`
+* input field appeared when the add button is clicked.
+* Random pokemon numbers and input text save in the MySQL server.
+* The app shows updated text and images from the server.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Confirm to-do content:**<br>
+<img src="https://user-images.githubusercontent.com/59901905/159135067-a1f83ea8-6a77-414a-bb2e-17986d1d43a5.PNG" width="200"/>
+<img src="https://user-images.githubusercontent.com/59901905/159135069-91917a6e-b398-4232-b007-e6247604b94f.PNG" width="200"/>
 
-### `npm test`
+* When the user clicks the Pokeball image, the data will be deleted from the server.
+* User character gets exp point and the exp bar increase.
+* Modal shows the captured pokemon image and the pokemon is added to the user collection.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Collections:**<br>
+<img src="https://user-images.githubusercontent.com/59901905/159135070-74f4d2ab-377b-4e00-8b78-5446658c4d2c.PNG" width="200"/>
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* The captured Pokemons data is saved and users can check it on the Pokedex page.
