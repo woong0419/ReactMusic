@@ -11,6 +11,10 @@ This project website [React music App](https://react-music-w.netlify.app/).
 <img src="https://user-images.githubusercontent.com/59901905/159136920-15dcfa94-5f42-4337-9544-ca36b65ca74b.PNG" width="350"/>
 <img src="https://user-images.githubusercontent.com/59901905/159136921-62b1a187-a8fc-4637-b6ec-d506acaf709c.PNG" width="350"/>
 
+* Users will register in the database their username and password.
+* Users can log in if the input username and password match within saved data.
+
+
 **Main page:**<br>
 <img src="https://user-images.githubusercontent.com/59901905/159136923-bd65a8aa-5586-4ef7-804f-2240c7b7659c.PNG" width="350"/>
 
