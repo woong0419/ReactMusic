@@ -8,23 +8,13 @@ This project website [React music App](https://react-music-w.netlify.app/).
 ## Result screen
 
 **Adding to-do content:**<br>
-<img src="https://user-images.githubusercontent.com/59901905/159135058-d3dad050-671f-4ebf-9695-162c5d8fcde0.PNG" width="200"/>
-<img src="https://user-images.githubusercontent.com/59901905/159135061-4c844e35-ad4a-45cf-b530-8b23cf6af1ea.PNG" width="200"/>
+<img src="https://user-images.githubusercontent.com/59901905/159136920-15dcfa94-5f42-4337-9544-ca36b65ca74b.PNG" width="350"/>
+<img src="https://user-images.githubusercontent.com/59901905/159136921-62b1a187-a8fc-4637-b6ec-d506acaf709c.PNG" width="350"/>
+<img src="https://user-images.githubusercontent.com/59901905/159136923-bd65a8aa-5586-4ef7-804f-2240c7b7659c.PNG" width="350"/>
+<img src="https://user-images.githubusercontent.com/59901905/159136924-c5765514-dce1-44f9-ab10-4b2d9f0f0cae.PNG" width="350"/>
+<img src="https://user-images.githubusercontent.com/59901905/159136927-f0e9337c-1fda-4f6a-89ce-557d9f04f93c.PNG" width="350"/>
+<img src="https://user-images.githubusercontent.com/59901905/159136929-bc78802f-d0d1-4b4b-9027-4911029c51f7.PNG" width="350"/>
+<img src="https://user-images.githubusercontent.com/59901905/159136932-213ebe6f-9c23-446a-8776-34a60200a480.PNG" width="350"/>
 
-* input field appeared when the add button is clicked.
-* Random pokemon numbers and input text save in the MySQL server.
-* The app shows updated text and images from the server.
 
 
-**Confirm to-do content:**<br>
-<img src="https://user-images.githubusercontent.com/59901905/159135067-a1f83ea8-6a77-414a-bb2e-17986d1d43a5.PNG" width="200"/>
-<img src="https://user-images.githubusercontent.com/59901905/159135069-91917a6e-b398-4232-b007-e6247604b94f.PNG" width="200"/>
-
-* When the user clicks the Pokeball image, the data will be deleted from the server.
-* User character gets exp point and the exp bar increase.
-* Modal shows the captured pokemon image and the pokemon is added to the user collection.
-
-**Collections:**<br>
-<img src="https://user-images.githubusercontent.com/59901905/159135070-74f4d2ab-377b-4e00-8b78-5446658c4d2c.PNG" width="200"/>
-
-* The captured Pokemons data is saved and users can check it on the Pokedex page.
